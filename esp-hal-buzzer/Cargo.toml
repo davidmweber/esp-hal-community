@@ -14,19 +14,20 @@ targets  = ["riscv32imc-unknown-none-elf"]
 [dependencies]
 defmt             = { version = "1.0.1", optional = true }
 document-features = "0.2.11"
-esp-hal           = { version = "1.0.0-beta.1", features = ["unstable"] }
+esp-hal           = { version = "1.0.0-rc.0", features = ["requires-unstable"] }
 
 [dev-dependencies]
-esp-backtrace = { version = "0.16.0", features = [
+esp-backtrace = { version = "0.17.0", features = [
   "exception-handler",
   "panic-handler",
   "println",
 ] }
-esp-println = "0.14.0"
+esp-println = "0.15.0"
 
 [features]
 ## Implement `defmt::Format` on certain types.
 defmt = ["dep:defmt", "esp-hal/defmt"]
+unstable = ["esp-hal/unstable"]
 
 #! ### Chip Support Feature Flags
 ## Target the ESP32.
@@ -43,3 +44,4 @@ esp32h2 = ["esp-backtrace/esp32h2", "esp-hal/esp32h2", "esp-println/esp32h2"]
 esp32s2 = ["esp-backtrace/esp32s2", "esp-hal/esp32s2", "esp-println/esp32s2"]
 ## Target the ESP32-S3.
 esp32s3 = ["esp-backtrace/esp32s3", "esp-hal/esp32s3", "esp-println/esp32s3"]
+
